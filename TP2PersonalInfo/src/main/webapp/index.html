@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            form{
+                max-width: 500px;
+                margin: auto;
+                box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                padding: 20px;
+                font-family: sans-serif;
+            }
+            h1{
+                text-align: center;
+            }
+            .form-row--flex{
+                display: flex;
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+            .form--row{
+                margin-bottom: 20px;
+            }
+            input{
+                flex: 1;
+                padding: 5px;
+            }
+            textarea{
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <form method="POST" action="formServlet">
+            <h1>User form</h1>
+            <div class="form--row form-row--flex">
+                <input type="text" name="prenom" />
+                <input type="text" name="nom" />
+                <input type="number" name="age" />
+            </div>
+            <div class="form--row">
+                <label>Sexe</label>
+                <div>
+                    <label>
+                        <input type="radio" name="sexe" value="Homme" /> Homme
+                    </label>
+                    <label>
+                        <input type="radio" name="sexe" value="Femme" /> Femme
+                    </label>
+                </div>
+            </div>
+            <div class="form--row">
+                <label>
+                    Hobbies
+                </label>
+                <div>
+                    <input type="checkbox" name="hobbies" value="Lecture" />Lecture
+                    <input type="checkbox" name="hobbies" value="Sport" />Sport
+                    <input type="checkbox" name="hobbies" value="Cinéma" />Cinéma
+                    <input type="checkbox" name="hobbies" value="Musique" />Musique
+                </div>
+            </div>
+            <div class="form--row">
+                <textarea name="comments" rows="10"></textarea>
+            </div>
+            <input type="submit" value="Soumettre" />
+        </form>
+    </body>
+</html>
