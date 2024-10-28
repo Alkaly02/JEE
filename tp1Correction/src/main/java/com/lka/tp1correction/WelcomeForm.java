@@ -4,6 +4,7 @@
  */
 package com.lka.tp1correction;
 
+import jakarta.servlet.ServletConfig;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -33,7 +34,8 @@ public class WelcomeForm extends HttpServlet {
     public void init()
             throws ServletException {
         messageBienvenue = getServletConfig().getInitParameter("message");
-        System.out.print("====================Message=======================");
+//        String message = messageBienvenue = config.getInitParameter("message");
+        System.out.print("====================Message=======================" );
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

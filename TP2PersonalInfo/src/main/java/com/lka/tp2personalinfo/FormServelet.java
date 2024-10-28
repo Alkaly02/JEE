@@ -4,6 +4,7 @@
  */
 package com.lka.tp2personalinfo;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletContext;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,6 +13,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.Enumeration;
 
 /**
  *
@@ -43,6 +45,7 @@ public class FormServelet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.getWriter().println("Hello");
+//        request.getRequestDispatcher("test.jsp").forward(request, response);
     }
 
     /**
@@ -56,40 +59,18 @@ public class FormServelet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String prenom = request.getParameter("prenom");
-        String nom = request.getParameter("nom");
-        String age = request.getParameter("age");
-        String sexe = request.getParameter("sexe");
-        String[] hobbies = request.getParameterValues("hobbies");
-        String comments = request.getParameter("comments");
-        
-        String hobbiesSelected = "";
-        if(hobbies!=null){
-            for(String hobbie: hobbies){
-                hobbiesSelected += hobbie + ", ";
-            }
-        }
-        
-        response.setContentType("text/html");
-        response.setCharacterEncoding("utf-8");
-        
-        PrintWriter os = response.getWriter();
-        
-        os.println("<!Doctype html>");
-        os.println("<html>");
-        os.println("<head>");
-        os.println("<title>Information personnelles</title>");
-        os.println("</head>");
-        os.println("<body>");
-        os.println("<h1>Information formulaire</h1>");
-        os.println("<p>Prenom: " + prenom +"</p>");
-        os.println("<p>Nom: " + nom +"</p>");
-        os.println("<p>Age: " + age +"</p>");
-        os.println("<p>Sexe: " + sexe +"</p>");
-        os.println("<p>Hobbies: " + hobbiesSelected +"</p>");
-        os.println("<p>Commentaires: " + comments +"</p>");
-        os.println("<body>");
-        os.println("</html>");
+        Enumeration names = request.getParameterNames();
+        while(names.hasMoreElements()){
+                String name = (String) names.nextElement();
+                if("hobbies".equals(name)){
+                    String[] hobbies = request.getParameterValues(name);
+                    request.setAttribute(name, hobbies);
+                    continue;
+                }
+                request.setAttribute(name, request.getParameter(name));
+         }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("fowardedServlet");
+        dispatcher.forward(request, response);
     }
 
     /**

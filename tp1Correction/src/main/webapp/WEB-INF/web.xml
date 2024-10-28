@@ -9,14 +9,14 @@
         </session-timeout>
     </session-config>
     
-    <servelt>
+    <servlet>
         <servlet-name>WelcomeForm</servlet-name>
         <servlet-class>com.lka.tp1correction.WelcomeForm</servlet-class>
         <init-param>
             <param-name>message</param-name>
             <param-value>Bienvenue dans Netbeans23</param-value>
         </init-param>
-    </servelt>
+    </servlet>
     <servlet-mapping>
         <servlet-name>WelcomeForm</servlet-name>
         <url-pattern>/welcomeForm</url-pattern>
