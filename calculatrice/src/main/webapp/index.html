@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h1>Calculatrice</h1>
+        <form action="Calculator.jsp" method="POST">
+            <label>
+                Num1: <input type="number" name="num1" />
+            </label><br><br>
+            <label>
+                Num2: <input type="number" name="num2" />
+            </label><br><br>
+            <label>
+                Operation: <select name="operation">
+                    <option value="addition">Addition</option>
+                    <option value="soustraction">Soustraction</option>
+                    <option value="multiplication">Multiplication</option>
+                    <option value="division">Division</option>
+                </select>
+            </label><br><br>
+            <input type="submit" value="Calculer" />
+        </form>
+    </body>
+</html>
