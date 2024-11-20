@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Gestion facture</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h1>Ajouter une nouvelle facture</h1>
+        <form action="/factures" method="POST">
+            <label for="nom">
+                Nom client: <input id="nom" type="text" name="nom_utilisateur" />
+            </label>
+            <label for="date">
+                Date de la facture: <input id="date" type="date" name="date_facture" />
+            </label>
+            <div>
+                Liste des produits
+                <div id="products_container">
+                    <div>
+                        <label for="nom_produit">
+                            <input id="nom_produit" name="nom_produit" type="text" placeholder="Nom produit" />
+                        </label>
+                        <label for="prix_produit">
+                            <input id="prix_produit" name="prix_produit" type="number" placeholder="Prix produit" />
+                        </label>
+                    </div>
+                </div>
+                <button id="ajout_produit_btn" type="button">Nouveau produit</button>
+            </div>
+            <input type="submit" value="Envoyer" />
+        </form>
+        
+        <script>
+            const ajoutProduit = document.getElementById("ajout_produit_btn");
+            const conteneurListeProduits = document.getElementById("products_container");
+            
+            ajoutProduit.addEventListener("click", () => {
+                const div = document.createElement("div");
+//              Creation du label et l'input du produit
+                const produitNomtLabel = document.createElement("label");
+                const produitNomInput = document.createElement("input");
+//                TODO: ajouter les attributs necessaires a l'input
+//              Ajout de l'input nom produit dans le label
+                produitNomtLabel.appendChild(produitNomInput);
+//                
+//              Creation du label et de l'input du produit
+                const produitPrixLabel = document.createElement("label");
+                const produitPrixInput = document.createElement("input");
+//              Ajout de l'input prix produit dans le label
+                produitPrixLabel.appendChild(produitPrixInput);
+                
+//              Ajout des deux labels dans un div
+                div.appendChild(produitNomtLabel);
+                div.appendChild(produitPrixLabel);
+                
+//              Ajout de la div dans le HTML
+                conteneurListeProduits.appendChild(div);
+            });
+        </script>
+    </body>
+</html>
