@@ -8,7 +8,7 @@
         <h1>Ajouter une nouvelle facture</h1>
         <form action="/factures" method="POST">
             <label for="nom">
-                Nom client: <input id="nom" type="text" name="nom_utilisateur" />
+                Nom client: <input id="nom" type="text" name="nom_client" />
             </label>
             <label for="date">
                 Date de la facture: <input id="date" type="date" name="date_facture" />
@@ -18,10 +18,10 @@
                 <div id="products_container">
                     <div>
                         <label for="nom_produit">
-                            <input id="nom_produit" name="nom_produit" type="text" placeholder="Nom produit" />
+                            <input id="nom_produit" name="nom_produit[]" type="text" placeholder="Nom produit" />
                         </label>
                         <label for="prix_produit">
-                            <input id="prix_produit" name="prix_produit" type="number" placeholder="Prix produit" />
+                            <input id="prix_produit" name="prix_produit[]" type="number" placeholder="Prix produit" />
                         </label>
                     </div>
                 </div>
@@ -39,13 +39,18 @@
 //              Creation du label et l'input du produit
                 const produitNomtLabel = document.createElement("label");
                 const produitNomInput = document.createElement("input");
-//                TODO: ajouter les attributs necessaires a l'input
+//              Ajout des attributs a l'input
+                produitNomInput.setAttribute("name", "nom_produit[]");
+                produitNomInput.setAttribute("placeholder", "Nom produit");
 //              Ajout de l'input nom produit dans le label
                 produitNomtLabel.appendChild(produitNomInput);
 //                
 //              Creation du label et de l'input du produit
                 const produitPrixLabel = document.createElement("label");
                 const produitPrixInput = document.createElement("input");
+//              Ajout des attributs a l'input
+                produitPrixInput.setAttribute("name", "prix_produit[]");
+                produitPrixInput.setAttribute("placeholder", "Prix produit");
 //              Ajout de l'input prix produit dans le label
                 produitPrixLabel.appendChild(produitPrixInput);
                 
