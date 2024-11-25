@@ -12,16 +12,27 @@ import java.util.List;
  * @author HP
  */
 public class Facture {
+    private Long id;
     private String nomClient;
     private String dateFacture;
     private List<Produit> produits;
     private Double total;
+    
+    public Facture(){};
     
     public Facture(String nomClient, String dateFacture, List<Produit> produits, Double total) {
         this.nomClient = nomClient;
         this.dateFacture = dateFacture;
         this.produits = produits;
         this.total = total;
+    }
+    
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNomClient() {
